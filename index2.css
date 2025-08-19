@@ -1,0 +1,346 @@
+
+:root {
+  /* Light Theme */
+  --color: black;
+  --body-bg-color: rgb(233, 231, 231);
+  --box-shadow: -3px -3px 4px #634991, 3px 3px 4px #5ba7d4;
+  --box-shadow-hover: 1px -1px 4px #cacfd2, -1px 1px 4px #ffffff;
+  --box-shadow-inner: 3px -3px 4px #cacfd2, -3px 3px 4px #ffffff;
+  --navbar-background-color:#6bb8de;
+  --navbar-text-color:black;
+  --card-background-color :#289cd7;
+  --song-background-color :#2382b2;
+  --song-background-hover : #0573ab;
+  --select-background-color:#1890cc;
+  --playlist-button-background-color: #915bfe;
+  --playlist-button-background-color-hover :#915bfe;
+}
+
+[data-theme="dark"] {
+  /* Dark Theme */
+  --color: #ffffff;
+  --body-bg-color: #565656;
+  --box-shadow: -3px -3px 4px #cacfd245, 3px 3px 4px #000000;
+  --box-shadow-hover: 1px -1px 4px #000000, -1px 1px 4px #cacfd245;
+  --box-shadow-inner: 3px -3px 4px #000000, -3px 3px 4px #cacfd245;
+  --card-background-color :#64696d;
+    --navbar-background-color:#263238;
+  --navbar-text-color:white;
+  --song-background-color :#64696d;
+  --song-background-hover : #64696d;
+  --playlist-button-background-color: #7341d6;
+}
+#main{
+  display: flex;
+  flex-direction: row;
+}
+/* Body and general styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: var(--body-bg-color);
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Header and Logo */
+.logo {
+  text-align: center;
+  margin-bottom: 20px;
+  
+}
+
+.logo h1 {
+  color: var(--color);
+  font-size: 28px;
+  font-weight: bold;
+}
+.theme-toggle {
+  position: relative;
+  left: 92%;
+  top: 10px;
+  display: inline-block;
+  width: 90px;
+  height: 34px;
+}
+
+.theme-toggle input[type="checkbox"] {
+  display: none;
+}
+.theme-toggle .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.theme-toggle .slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: #fff;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+.theme-toggle input:checked + .slider {
+  background-color: #2196F3;
+}
+
+.theme-toggle input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.theme-toggle .slider:after {
+  content: "Dark";
+  color: #fff;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 80%;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.theme-toggle input:checked + .slider:after {
+  content: "Light";
+}
+
+.navbar .filter {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  margin-top: 20px;
+}
+
+.navbar label {
+  margin-right: 10px;
+}
+
+.navbar select#genre-select {
+  padding: 8px;
+  border-radius: 4px;
+  border: none;
+}
+
+.navbar {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: var(--navbar-background-color);
+  padding: 10px 20px;
+  width: 300px;
+  color: var(--navbar-text-color);
+  order: 1;
+  border-radius: 10px;
+}
+
+.navbar ul li{
+  color: white;
+}
+.navbar select#genre-select option {
+  background-color: var(--select-background-color);
+}
+#genre-select{
+  background-color: #3f718a;
+}
+.navbar select#genre-select option[value=""] {
+  font-weight: bold;
+}
+
+.navbar h2.all {
+  margin: 0;
+}
+
+/* Song Card */
+.card {
+
+  border-radius: 5px;
+  box-shadow: var(--box-shadow);
+  margin: 5px 30px 0px 30px;
+  background-color: var(--navbar-background-color);
+  text-align: center;
+  max-width: 500px;
+  order: 2;
+  flex: 1;
+}
+#song-info{
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 30px;
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: var(--box-shadow);
+  background-color: var(--song-background-color);
+}
+#song-info:hover{
+  color: white;
+  background-color: var(--song-background-hover);
+
+}
+.card h2 {
+  margin: 5px 0px 5px 0px;
+  font-size: 24px;
+  color: var(--card-text-color);
+}
+
+.card p {
+  margin-top: 3px;
+}
+
+.card img {
+  max-width: 400px;
+}
+
+.card audio {
+  margin: 20px auto;
+  display: block;
+  width: 80%;
+}
+
+.card .controls {
+  margin-top: 20px;
+}
+
+.card button {
+  background-color: var(--playlist-button-background-color);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  width: 100px;
+  height: 40px;
+  margin:5px;
+  font-size: 16px;
+}
+
+/* Playlist Sidebar */
+#playlist_section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  order: 10;
+  height: 40%;
+}
+
+.playlist-sidebar {
+  background-color: var(--sidebar-background-color);
+  padding-left: 20px;
+  border-radius: 5px;
+  box-shadow: var(--box-shadow);
+  padding-top: 0px;
+  margin-top: 0px;
+  min-width: 300px;
+  height: 600px;
+  order: 3;
+  color: var(--sidebar-text-color);
+}
+
+.playlist-sidebar h2 {
+  font-size: 20px;
+}
+
+.playlist-sidebar ul {
+  list-style-type: none; /* Remove default list-style */
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+#current-playlist li{
+  margin-bottom: 5px;
+  color: white;
+   background-color: var(--card-background-color);
+   width: 80%;
+  padding: 5px;
+  padding-top: 10px;
+  cursor: pointer;
+  font-size: 18px;
+}
+.playlist-sidebar{
+  background-color: var(--navbar-background-color);
+  color: var(--navbar-text-color);
+}
+
+.playlist-sidebar ul li {
+  margin-bottom: 5px;
+   background-color: var(--card-background-color);
+   color: white;
+   width: 80%;
+  padding: 5px;
+  padding-top: 10px;
+  font-size: 18px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+.playlist-sidebar li:hover{
+  background-color: var(--hover-background-color);
+}
+#current-playlist-div li:hover{
+  background-color: var(--hover-background-color);
+
+}
+/* Customization for Playlist Section */
+
+#playlist-input {
+  padding: 12px;
+  margin-bottom: 14px;
+  width: 200px;
+  background-color: var(--playlist-input-background-color);
+  color: var(--playlist-input-text-color);
+  font-size: 16px;
+}
+
+#create-playlist-button {
+  background-color: var(--playlist-button-background-color);
+  color: var(--playlist-button-text-color);
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-weight: 300;
+  font-size: 16px;
+}
+#create-playlist-button:hover{
+  background-color: var(--playlist-button-background-color-hover);
+}
+
+
+
+/* All Songs */
+#all-songs {
+
+  padding: 0px;
+  margin-top: 40px;
+  list-style-type: none;
+}
+
+#all-songs li {
+  margin-bottom: 10px;
+  padding: 8px 16px;
+  background-color: var(--card-background-color);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+#all-songs li:hover {
+  background-color: var(--hover-background-color);
+}
+
